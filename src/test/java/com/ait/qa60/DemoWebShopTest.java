@@ -1,5 +1,6 @@
 package com.ait.qa60;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -21,7 +22,38 @@ public class DemoWebShopTest {
         System.out.println("Open Shop");
     }
 
-    @AfterMethod(enabled = false)
+    @Test
+    public void findElementBySimpleLocators() {
+        driver.findElement(By.tagName("img"));
+        driver.findElement(By.linkText("Register"));
+        driver.findElement(By.linkText("Log in"));
+        driver.findElement(By.linkText("Shopping cart"));
+        driver.findElement(By.linkText("Wishlist"));
+        driver.findElement(By.id("small-searchterms"));
+        driver.findElement(By.className("top-menu"));
+        driver.findElement(By.linkText("Shopping cart"));
+        driver.findElement(By.partialLinkText("Com"));
+        driver.findElement(By.partialLinkText("Ele"));
+
+    }
+
+    @Test
+    public void findElementByCssSelector() {
+//        driver.findElement(By.cssSelector(".button-1 search-box-button"));
+        driver.findElement(By.cssSelector("[href^='/app']"));
+        driver.findElement(By.cssSelector("[href*='digit']"));
+        driver.findElement(By.cssSelector("[href$='lry']"));
+        driver.findElement(By.cssSelector(".nivo-imageLink"));
+        driver.findElement(By.cssSelector("#newsletter-subscribe-button"));
+        driver.findElement(By.cssSelector(".listbox"));
+        driver.findElement(By.cssSelector("h2"));
+        driver.findElement(By.cssSelector("strong"));
+        driver.findElement(By.cssSelector(".footer-poweredby"));
+        driver.findElement(By.cssSelector("[href='http://www.nopcommerce.com/']"));
+
+    }
+
+    @AfterMethod(enabled = true)
     public void tearDown() {
         driver.quit();
     }
