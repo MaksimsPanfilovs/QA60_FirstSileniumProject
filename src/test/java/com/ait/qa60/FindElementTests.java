@@ -78,6 +78,62 @@ public class FindElementTests {
         // end on -> $
         driver.findElement(By.cssSelector("[href$='search']"));
 
+        // tag and id
+        driver.findElement(By.cssSelector("input#city"));
+
+        // tag and className
+        driver.findElement(By.cssSelector("div.search-card"));
+
+        // tag and id and [attr= 'value']
+        driver.findElement(By.cssSelector("input#city[type='text']"));
+
+    }
+
+    //  //*[@attr='value']
+    @Test
+    public void findElementByXpath() {
+        // tag -> xpath - //tag
+        // driver.findElement(By.tagName("h1"));
+        driver.findElement(By.xpath("//h1"));
+
+
+        // id -> xpath - //*[@id='value']
+        // driver.findElement(By.id("city"));
+        driver.findElement(By.xpath("//input[@id='city']"));
+
+        // className -> xpath - //*[@class='value']
+        // driver.findElement(By.className("header"));
+        driver.findElement(By.xpath("//div[@class='header']"));
+
+        // contains -> //*[contains(.,'Text')]
+        driver.findElement(By.xpath("//h2[contains(.,'Yalla')]"));
+
+        // equal -> //*[text()='FullText']
+        driver.findElement(By.xpath("//h2[text()='Type your data and hit Yalla!']"));
+        driver.findElement(By.xpath("//h2[.='Type your data and hit Yalla!']")); // то же самое
+
+        // start-with -> //*[starts-with(@attr,'value')]
+        driver.findElement(By.xpath("//label[starts-with(@for,'ci')]"));
+
+        // move up
+        driver.findElement(By.xpath("//a[@class='navigation-link']/.."));
+
+        // parent
+        driver.findElement(By.xpath("//h1/parent::*"));
+        driver.findElement(By.xpath("//h1/..")); // аналогичная запись
+
+        //ancestor
+        driver.findElement(By.xpath("//h1/ancestor::*")); // all
+        driver.findElement(By.xpath("//h1/ancestor::div")); // two options
+        driver.findElement(By.xpath("//h1/ancestor::div[2]")); // one option
+
+        // following-sibling
+        driver.findElement(By.xpath("//h1/following-sibling::form"));
+
+        // preceding-sibling
+        driver.findElement(By.xpath("//h2/preceding-sibling::*"));
+
+
     }
 
     @AfterMethod(enabled = true)

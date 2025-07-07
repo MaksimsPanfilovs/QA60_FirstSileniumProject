@@ -50,12 +50,22 @@ public class DemoWebShopTest {
         driver.findElement(By.cssSelector("strong"));
         driver.findElement(By.cssSelector(".footer-poweredby"));
         driver.findElement(By.cssSelector("[href='http://www.nopcommerce.com/']"));
+    }
 
+    @Test
+    public void findElementByXpath() {
+        driver.findElement(By.xpath("//h2"));
+        driver.findElement(By.xpath("//input[@id='newsletter-subscribe-button']"));
+        driver.findElement(By.xpath("//div[@class='leftside-3']"));
+        driver.findElement(By.xpath("//li[contains(.,'Computers')]"));
+        driver.findElement(By.xpath("//strong[.='Categories']"));
+        driver.findElement(By.xpath("//a[.='Addresses']"));
+        driver.findElement(By.xpath("//h3[contains(.,'Customer')]"));
+        driver.findElement(By.xpath("//h3[starts-with(.,'My')]"));
     }
 
     @AfterMethod(enabled = true)
     public void tearDown() {
         driver.quit();
     }
-
 }
